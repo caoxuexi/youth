@@ -1,0 +1,13 @@
+<view class="container">
+    <l-grid l-class="inner-container">
+        <block wx:for="{{grid}}" wx:key="index">
+            <!--   index是wx:for里面的索引 item表示里面的内容   -->
+            <l-grid-item key="{{index}}" slot="{{index}}">
+                <view class="grid-item" >
+                    <image class="img" src="{{item.img}}"></image>
+                    <text class="text">{{item.title}}</text>
+                </view>
+            </l-grid-item>
+        </block>
+    </l-grid>
+</view>

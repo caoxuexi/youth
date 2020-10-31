@@ -1,0 +1,37 @@
+/**app.wxss**/
+page{
+    background-color:#f5f5f5 ;
+}
+
+@font-face {
+    font-family: 'iconfont';  /* project id 1968616 */
+    src: url('//at.alicdn.com/t/font_1968616_veex5m9xxus.eot');
+    src: url('//at.alicdn.com/t/font_1968616_veex5m9xxus.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1968616_veex5m9xxus.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1968616_veex5m9xxus.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1968616_veex5m9xxus.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1968616_veex5m9xxus.svg#iconfont') format('svg');
+}
+
+.sleeve{
+    /*这里的font-family必须和我们导入的font-face中的一致*/
+    font-family: iconfont !important;
+}
+
+/*l-icon-xxx:before 只有xxx是我们可以自己改的
+content：为图标的编码去掉x和x前面的补个\再跟上后面的字母*/
+.l-icon-home:before{
+    content:"\e63d"
+}
+
+.l-icon-recommend:before{
+    content:"\e6c9"
+}
+
+.l-icon-check:before{
+    content:"\e646"
+}
+
+.l-icon-address1:before{
+    content:"\e614"
+}

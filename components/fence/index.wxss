@@ -1,0 +1,23 @@
+.row-container{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+.title{
+    color: #555555;
+    font-size: 24rpx;
+    margin-bottom: 28rpx;
+    margin-top: 28rpx;
+}
+
+.cell{
+    margin-bottom: 30rpx;
+    margin-right: 20rpx;
+}
+
+.hr{
+    width: 690rpx;
+    height: 2rpx;
+    background-color: #e0dfdf;
+}

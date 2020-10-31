@@ -1,0 +1,14 @@
+{
+  "name": "windsleeve",
+  "version": "0.1.0",
+  "description": "风袖",
+  "main": "app.js",
+  "dependencies": {
+    "lin-ui": "~0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "caoxuexi",
+  "license": "ISC"
+}

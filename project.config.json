@@ -20,6 +20,8 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -31,8 +33,8 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "useMultiFrameRuntime": false,
-    "useApiHook": true
+    "bundle": false,
+    "useApiHostProcess": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.0",

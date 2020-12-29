@@ -71,9 +71,10 @@
     "l-loadmore": "miniprogram_npm/lin-ui/loadmore/index",
     "s-spu-preview": "components/spu-preview/index",
     "s-spu-preview-r": "components/spu-preview-r/index",
+    "s-address": "/components/address/index",
     "s-empty": "components/empty/index",
     "s-empty-screen": "/components/empty-screen/index",
-    "s-address": "/components/address/index",
-    "s-order-sku-item": "/components/order-sku-item/index"
+    "s-order-sku-item": "/components/order-sku-item/index",
+    "s-coupon": "/components/coupon/index"
   }
 }

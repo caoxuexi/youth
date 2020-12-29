@@ -13,6 +13,12 @@ class SpuPaging{
     //5.分页数据 a:正在加载 b.加载完成 c.没有更多数据
     //6.上滑页面触底 加载 避免用户重复发请求
 
+    static getByCategoryPaging(cid, isRoot) {
+        return new Paging({
+            url: `spu/by/category/${cid}?is_root=${isRoot}`
+        })
+    }
+
 }
 
 export {

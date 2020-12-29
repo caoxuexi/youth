@@ -47,20 +47,20 @@ Page({
         })
     },
 
-    onSegChange(event){
-        const rootId=event.detail.activeKey
-        const currentSubs=this.data.categories.getSubs(rootId)
-        const currentRoot=this.data.categories.getRoot(rootId)
+    onSegChange(event) {
+        const rootId = event.detail.activeKey
+        const currentSubs = this.data.categories.getSubs(rootId)
+        const currentRoot = this.data.categories.getRoot(rootId)
         this.setData({
             currentSubs,
-            currentBannerImg:currentRoot.img
+            currentBannerImg: currentRoot.img
         })
     },
 
-    onJumpToSpuList(event){
-       const cid=event.detail.cid
+    onJumpToSpuList(event) {
+        const cid = event.detail.cid
         wx.navigateTo({
-            url:`/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.SUB_CATEGORY}`
+            url: `/pages/spu-list/spu-list?cid=${cid}&type=${SpuListType.SUB_CATEGORY}`
         })
     },
 

@@ -14,6 +14,7 @@ Page({
         totalPrice:0,
         totalSkuCount:0,
         spuPaging: null,
+        KEY:'RECOMMEND_GOOD',//推荐商品的缓存写入key
     },
 
     onLoad: async function (options) {
@@ -39,12 +40,12 @@ Page({
         if (!data) {
             return
         }
-        //累加 第二个参数是是否清空原来的数据
-        wx.lin.renderWaterFlow(data.items,true);
+        //写入缓存 避免每次重复发起请求 提升性能 在onshow中加载数据
+        wx.setStorageSync(this.data.KEY,data.items);
     },
 
     //页面显示
-    onShow: function () {
+    onShow: async function () {
         const cart = new Cart()
         const cartItems = cart.getAllCartItemFromLocal().items
         if (cart.isEmpty()) {
@@ -57,6 +58,8 @@ Page({
         this.notEmpty()
         this.isAllChecked()
         this.refreshCartData()
+        //累加 第二个参数是是否清空原来的数据
+        await wx.lin.renderWaterFlow(wx.getStorageSync(this.data.KEY),true)
     },
 
     empty() {

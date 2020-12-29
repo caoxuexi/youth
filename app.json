@@ -64,6 +64,7 @@
     "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-tag": "miniprogram_npm/lin-ui/tag/index",
@@ -71,6 +72,7 @@
     "s-spu-preview": "components/spu-preview/index",
     "s-spu-preview-r": "components/spu-preview-r/index",
     "s-empty": "components/empty/index",
+    "s-empty-screen": "/components/empty-screen/index",
     "s-address": "/components/address/index",
     "s-order-sku-item": "/components/order-sku-item/index"
   }

@@ -44,7 +44,20 @@ const CouponStatus = {
     EXPIRED: 3
 }
 
+const CouponType = {
+    FULL_MINUS: 1,
+    FULL_OFF: 2,
+    NO_THRESHOLD_MINUS: 3
+}
+
+const CouponOperate = {
+    PICK: 'pick',
+    UNPICK: 'unpick'
+}
+
 export {
+    CouponOperate,
+    CouponType,
     CouponStatus,
     CellStatus,
     ShoppingWay,

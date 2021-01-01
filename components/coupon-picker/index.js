@@ -19,7 +19,7 @@ Component({
             //如果有coupon，把原始的coupons转化为一个couponView数组
             const couponsView = this.convertToView(coupons)
             const satisfactionCount = this.getSatisfactionCount(coupons)
-            console.log(couponsView)
+            // console.log(couponsView)
             this.setData({
                 _coupons: couponsView,
                 satisfactionCount
@@ -91,9 +91,9 @@ Component({
 
         findCurrentCoupon(currentKey, key) {
             if (currentKey === null) {
-                return this.properties.coupons.find(coupon => coupon.id == key)
+                return this.properties.coupons.find(coupon => coupon.id === key)
             }
-            return this.properties.coupons.find(coupon => coupon.id == currentKey)
+            return this.properties.coupons.find(coupon => coupon.id === currentKey)
         }
 
     }

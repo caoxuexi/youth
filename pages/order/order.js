@@ -3,10 +3,14 @@ import {Sku} from "../../models/sku";
 import {OrderItem} from "../../models/order-item";
 import {Order} from "../../models/order";
 import {Coupon} from "../../models/coupon";
+import {CouponBO} from "../../models/coupon-bo";
 
 const cart=new Cart()
 Page({
-    data: {},
+    data: {
+        orderItems:[],
+        couponBOList:[]
+    },
     onLoad: async function (options) {
         let orderItems;
         let localItemCount
@@ -20,7 +24,12 @@ Page({
             console.error(e)
         }
         const coupons= await Coupon.getMySelfWithCategory()
-        console.log(coupons)
+        const couponBOList=this.packageCouponBOList(coupons,order)
+        console.log(orderItems)
+        this.setData({
+            orderItems,
+            couponBOList
+        })
     },
 
     async getCartOrderItems(skuIds){
@@ -35,5 +44,12 @@ Page({
           const count=cart.getSkuCountBySkuId(sku.id)
           return new OrderItem(sku,count)
       })
+    },
+
+    packageCouponBOList(coupons,order){
+        return coupons.map(coupon=>{
+            const couponBO=new CouponBO(coupon)
+            return couponBO
+        })
     },
 });

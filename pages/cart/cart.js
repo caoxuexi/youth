@@ -36,7 +36,7 @@ Page({
             spuPaging:paging
         })
         const data = await this.data.spuPaging.getMoreData();
-        console.log(data)
+        // console.log(data)
         if (!data) {
             return
         }

@@ -75,6 +75,7 @@
     "s-empty": "components/empty/index",
     "s-empty-screen": "/components/empty-screen/index",
     "s-order-sku-item": "/components/order-sku-item/index",
-    "s-coupon": "/components/coupon/index"
+    "s-coupon": "/components/coupon/index",
+    "s-coupon-mini": "/components/coupon-mini/index"
   }
 }

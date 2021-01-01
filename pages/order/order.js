@@ -2,6 +2,7 @@ import {Cart} from "../../models/cart";
 import {Sku} from "../../models/sku";
 import {OrderItem} from "../../models/order-item";
 import {Order} from "../../models/order";
+import {Coupon} from "../../models/coupon";
 
 const cart=new Cart()
 Page({
@@ -18,7 +19,8 @@ Page({
         } catch (e) {
             console.error(e)
         }
-        //TODO 先完成二阶段的api
+        const coupons= await Coupon.getMySelfWithCategory()
+        console.log(coupons)
     },
 
     async getCartOrderItems(skuIds){
@@ -29,7 +31,7 @@ Page({
     },
 
     packageOrderItems(skus){
-      skus.map(sku=>{
+      return skus.map(sku=>{
           const count=cart.getSkuCountBySkuId(sku.id)
           return new OrderItem(sku,count)
       })

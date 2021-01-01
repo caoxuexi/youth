@@ -1,8 +1,9 @@
 import {Spu} from "../../models/spu";
-import {ShoppingWay} from "../../core/enum";
+import {CouponCenterType, ShoppingWay} from "../../core/enum";
 import {SaleExplain} from "../../models/sale-explain";
 import {Cart} from "../../models/cart";
 import {CartItem} from "../../models/cart-item";
+import {Coupon} from "../../models/coupon";
 
 Page({
     data: {
@@ -15,15 +16,27 @@ Page({
     onLoad: async function (options) {
         const pid = options.pid;
         const spu = await Spu.getDetail(pid);
+
+        const coupons=await Coupon.getTop2CouponsByCategory(spu.category_id)
+
         const explain = await SaleExplain.getFixed()
         let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
         let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
         this.setData({
             spu,
             explain,
-            scrollHeight: windowHeight * 750 / windowWidth - 100
+            scrollHeight: windowHeight * 750 / windowWidth - 100,
+            coupons
         })
         this.updateCartItemCount()
+    },
+
+    onGoToCouponCenter(event) {
+        const type = CouponCenterType.SPU_CATEGORY
+        const cid = this.data.spu.category_id
+        wx.navigateTo({
+            url: `/pages/coupon/coupon?cid=${cid}&type=${type}`
+        })
     },
 
     onAddToCart(event) {

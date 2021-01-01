@@ -1,6 +1,7 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
 
 <view data-pid="{{data.id}}" bind:tap="onItemTap" class="container">
+    <image class="discount-tag" src="/components/imgs/discount.png" wx:if="{{data.discount_price}}"></image>
     <image bind:load="onImgLoad"  style="width:{{w}}rpx; height:{{h}}rpx;" src="{{data.img}}"></image>
     <view class="content-container">
         <text class="title">{{data.title}}</text>

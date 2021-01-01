@@ -4,17 +4,10 @@ import {CouponCenterType} from "../../core/enum";
 import {Coupon} from "../../models/coupon";
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         coupons: []
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: async function (options) {
         const aName = options.name
         const type = options.type

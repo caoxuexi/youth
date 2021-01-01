@@ -14,6 +14,13 @@
     padding: 16rpx 16rpx 22rpx 16rpx;
 }
 
+.discount-tag {
+    width: 40rpx;
+    height: 100rpx;
+    position: absolute;
+}
+
+
 .img{
     height: 360rpx;
     width: 100%;
@@ -55,3 +62,4 @@
     margin-top: 6rpx;
     color: #888;
 }
+

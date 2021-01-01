@@ -47,17 +47,10 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "gamePlugin": {
@@ -104,6 +97,7 @@
           "id": -1,
           "name": "pages/home/home",
           "pathName": "pages/home/home",
+          "query": "",
           "scene": null
         }
       ]

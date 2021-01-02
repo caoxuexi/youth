@@ -42,6 +42,19 @@ Page({
         })
     },
 
+    onGoToTheme(event) {
+        const tName = event.currentTarget.dataset.tname
+        wx.navigateTo({
+            url: `/pages/theme/theme?tname=${tName}`
+        })
+    },
+
+    onGoToBanner(event) {
+        const keyword = event.currentTarget.dataset.keyword
+        const type = event.currentTarget.dataset.type
+        Banner.gotoTarget(type, keyword)
+    },
+
     async initAllData() {
         // const themeA=await Theme.getHomeLocationA();
         //实例化一下，然后获取类属性

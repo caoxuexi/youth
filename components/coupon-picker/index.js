@@ -91,10 +91,9 @@ Component({
 
         findCurrentCoupon(currentKey, key) {
             if (currentKey === null) {
-                return this.properties.coupons.find(coupon => coupon.id === key)
+                return this.properties.coupons.find(coupon => coupon.id == key)
             }
-            return this.properties.coupons.find(coupon => coupon.id === currentKey)
+            return this.properties.coupons.find(coupon => coupon.id == currentKey)
         }
-
     }
 })

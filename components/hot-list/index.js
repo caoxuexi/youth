@@ -1,3 +1,4 @@
+const {Banner} = require("../../models/banner");
 Component({
     properties: {
         banner:Object
@@ -22,5 +23,19 @@ Component({
       }
     },
     data: {},
-    methods: {}
+    methods: {
+        onGotToTheme(event) {
+            const tName = event.currentTarget.dataset.tname
+            console.log(tName)
+            wx.navigateTo({
+                url: `/pages/theme/theme?tname=${tName}`
+            })
+        },
+
+        onGotoDetail(event) {
+            const keyword = event.currentTarget.dataset.keyword
+            const type = event.currentTarget.dataset.type
+            Banner.gotoTarget(type, keyword)
+        }
+    }
 });

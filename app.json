@@ -8,7 +8,8 @@
     "pages/search/search",
     "pages/spu-list/spu-list",
     "pages/order/order",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/theme/theme"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -71,6 +72,7 @@
     "l-loadmore": "miniprogram_npm/lin-ui/loadmore/index",
     "s-spu-preview": "components/spu-preview/index",
     "s-spu-preview-r": "components/spu-preview-r/index",
+    "s-spu-preview-h": "components/spu-preview-h/index",
     "s-address": "/components/address/index",
     "s-empty": "components/empty/index",
     "s-empty-screen": "/components/empty-screen/index",

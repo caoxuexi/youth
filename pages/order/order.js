@@ -4,12 +4,15 @@ import {OrderItem} from "../../models/order-item";
 import {Order} from "../../models/order";
 import {Coupon} from "../../models/coupon";
 import {CouponBO} from "../../models/coupon-bo";
+import {CouponOperate} from "../../core/enum";
 
 const cart=new Cart()
 Page({
     data: {
         totalPrice: 0,
         discountMoney: 0,
+        currentCouponId:null,
+        order:null,
         orderItems:[],
         couponBOList:[],
         scrollHeight:0
@@ -23,6 +26,7 @@ Page({
         orderItems = await this.getCartOrderItems(skuIds)
         localItemCount = skuIds.length
         const order = new Order(orderItems, localItemCount)
+        this.data.order = order
         try {
             order.checkOrderIsOk()
         } catch (e) {
@@ -48,8 +52,25 @@ Page({
     },
 
     onChooseCoupon(event){
+        // console.log(event.detail)
         const couponObj=event.detail.coupon
         const couponOperate=event.detail.operate
+        //区分一下是否是选中（不是取消选中）
+        if (couponOperate===CouponOperate.PICK){
+            this.data.currentCouponId=couponObj.id
+            const priceObj=CouponBO.getFinalPrice(this.data.order.getTotalPrice(),couponObj)
+            this.setData({
+                finalTotalPrice:priceObj.finalPrice,
+                discountMoney:priceObj.discountMoney
+            })
+        }else{
+            //如果是取消选中优惠券，就设置回原价就好了
+            this.data.currentCouponId=null
+            this.setData({
+                finalTotalPrice:this.data.order.getTotalPrice(),
+                discountMoney:0
+            })
+        }
     },
 
     packageOrderItems(skus){

@@ -4,18 +4,27 @@ import {OrderItem} from "../../models/order-item";
 import {Order} from "../../models/order";
 import {Coupon} from "../../models/coupon";
 import {CouponBO} from "../../models/coupon-bo";
-import {CouponOperate} from "../../core/enum";
+import {CouponOperate, ShoppingWay} from "../../core/enum";
+import {showToast} from "../../utils/ui";
+import {OrderPost} from "../../models/order-post";
+import {Payment} from "../../models/payment";
 
 const cart=new Cart()
 Page({
     data: {
+        address:null,
         totalPrice: 0,
         discountMoney: 0,
         currentCouponId:null,
         order:null,
+        orderFail:false,
+        orderFailMsg:"",
         orderItems:[],
         couponBOList:[],
-        scrollHeight:0
+        scrollHeight:0,
+        shoppingWay:ShoppingWay.BUY,
+        submitBtnDisable:false,
+
     },
     onLoad: async function (options) {
         let orderItems
@@ -23,6 +32,8 @@ Page({
         let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
         let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
         const skuIds = cart.getCheckedSkuIds()
+        const shoppingWay=options.way
+        this.data.shoppingWay=shoppingWay
         orderItems = await this.getCartOrderItems(skuIds)
         localItemCount = skuIds.length
         const order = new Order(orderItems, localItemCount)
@@ -51,6 +62,74 @@ Page({
         return orderItems
     },
 
+    //点击提交订单后触发的方法
+    async onSubmit(event) {
+        if (!this.data.address) {
+            showToast('请选择收货地址')
+            return
+        }
+        this.disableSubmitBtn()
+        const order = this.data.order
+        //组装订单要提交的出局，处理为蛇形格式
+        const orderPost = new OrderPost(
+            this.data.totalPrice,
+            this.data.finalTotalPrice,
+            this.data.currentCouponId,
+            order.getOrderSkuInfoList(),
+            this.data.address
+        )
+        //提交订单
+        const oid = await this.postOrder(orderPost)
+        if (!oid) {
+            this.enableSubmitBtn()
+            return
+        }
+
+        //提交订单成功后，把购物车里的对应商品移除掉
+        if (this.data.shoppingWay===ShoppingWay.CART){
+            cart.removeCheckedItems()
+        }
+
+        //向后端请求支付参数
+        const payParams=await Payment.getPayParams()
+    },
+
+    async postOrder(orderPost){
+        try{
+            const serverOrder=await Order.postOrderToServer(orderPost)
+            if (serverOrder){
+                return serverOrder.id //服务端生成的订单id号
+            }
+        }catch (e){
+            //code
+            this.setData({
+                orderFail:true,
+                orderFailMsg:e.message
+            })
+        }
+    },
+
+    //在点击一次submit按钮后，禁用submit按钮
+    disableSubmitBtn(){
+        this.setData({
+            submitBtnDisable:true
+        })
+    },
+
+    //在订单提交失败的情况下重新开启submit按钮
+    enableSubmitBtn() {
+        this.setData({
+            submitBtnDisable:false
+        })
+    },
+
+    //address组件选择确定地址后的处理函数
+    onChooseAddress(event){
+        const address=event.detail.address
+        this.data.address=address
+    },
+
+    //选择优惠券触发的方法
     onChooseCoupon(event){
         // console.log(event.detail)
         const couponObj=event.detail.coupon
@@ -87,4 +166,5 @@ Page({
             return couponBO
         })
     },
+
 });

@@ -232,6 +232,19 @@ class Cart {
         return this._getCartData().items.length
     }
 
+    //移除购物车车中被选中的商品
+    removeCheckedItems() {
+        const cartData=this._getCartData()
+        for (let i=0;i<cartData.items.length;i++){
+            if (cartData.items[i].checked){
+                //从数组中移除的一项的逻辑函数
+                cartData.items.splice(i,1)
+            }
+        }
+        //更新到缓存中去
+        this._refreshStorage()
+    }
+
     //合并老的和新的(新添加的在购物车存在的情况下)
     _combineItems(oldItem, newItem) {
         console.log(newItem)
@@ -270,6 +283,8 @@ class Cart {
             return item.skuId === skuId
         })
     }
+
+
 }
 
 export {

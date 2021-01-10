@@ -11,12 +11,15 @@ Component({
 
     lifetimes: {
         attached() {
+            //初始化的时候读的是缓存
             const address = Address.getLocal()
             if (address&&!(Object.keys(address).length===0)) {
-                console.log(address)
                 this.setData({
                     address,
                     hasChosen:true
+                })
+                this.triggerEvent('address',{
+                    address
                 })
             }
         }
@@ -48,6 +51,9 @@ Component({
                     address: res
                 })
                 Address.setLocal(res)
+                this.triggerEvent('address',{
+                    address:res
+                })
             }
         },
 

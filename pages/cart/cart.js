@@ -3,6 +3,7 @@ import {getSystemSize} from "../../utils/system";
 import {px2rpx} from "../../miniprogram_npm/lin-ui/utils/util";
 import {Calculator} from "../../models/calculator";
 import {SpuPaging} from "../../models/spu-paging";
+import {ShoppingWay} from "../../core/enum";
 
 const cart = new Cart()
 Page({
@@ -135,7 +136,7 @@ Page({
             return
         }
         wx.navigateTo({
-            url:"/pages/order/order"
+            url:`/pages/order/order?way=${ShoppingWay.CART}`
         })
     }
 });

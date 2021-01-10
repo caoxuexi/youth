@@ -6,6 +6,8 @@
 import {OrderExceptionType} from "../core/enum";
 import {OrderException} from "../core/order-exception";
 import {accAdd} from "../utils/number";
+import {isTimeTemp} from "../miniprogram_npm/lin-ui/calendar/util";
+import {Http} from "../utils/http";
 
 class Order {
     orderItems
@@ -63,6 +65,26 @@ class Order {
     checkOrderIsOk() {
         this.orderItems.forEach(item => {
             item.isOk()
+        })
+    }
+
+    //获取订单中sku的info所构成的list
+    getOrderSkuInfoList(){
+        return this.orderItems.map(item =>{
+            return{
+                id: item.skuId,
+                count:item.count
+            }
+        })
+    }
+
+    //提交订单给服务器
+    static async postOrderToServer(orderPost){
+        return await Http.request({
+            url:'order',
+            method:'POST',
+            data: orderPost,
+            throwError: true
         })
     }
 

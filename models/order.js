@@ -8,6 +8,7 @@ import {OrderException} from "../core/order-exception";
 import {accAdd} from "../utils/number";
 import {isTimeTemp} from "../miniprogram_npm/lin-ui/calendar/util";
 import {Http} from "../utils/http";
+import {OrderStatus} from "../core/enum"
 
 class Order {
     orderItems
@@ -86,6 +87,39 @@ class Order {
             data: orderPost,
             throwError: true
         })
+    }
+
+    static async getPaidCount() {
+        const orderPage = await Http.request({
+            url: `order/by/status/${OrderStatus.PAID}`,
+            data:{
+                start:0,
+                count:1
+            }
+        })
+        return orderPage.total
+    }
+
+    static async getUnpaidCount() {
+        const orderPage = await Http.request({
+            url: `order/status/unpaid`,
+            data:{
+                start:0,
+                count:1
+            }
+        })
+        return orderPage.total
+    }
+
+    static async getDeliveredCount() {
+        const orderPage = await Http.request({
+            url: `order/by/status/${OrderStatus.DELIVERED}`,
+            data: {
+                start:0,
+                count:1
+            }
+        })
+        return orderPage.total
     }
 
     _orderIsOk() {

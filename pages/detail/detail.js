@@ -84,7 +84,7 @@ Page({
 
         if(event.detail.orderWay===ShoppingWay.BUY){
             wx.navigateTo({
-                url:"/pages/order/order"
+                url:`/pages/order/order?sku_id=${chosenSku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`
             })
         }
     },

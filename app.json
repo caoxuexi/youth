@@ -9,7 +9,12 @@
     "pages/spu-list/spu-list",
     "pages/order/order",
     "pages/coupon/coupon",
-    "pages/theme/theme"
+    "pages/theme/theme",
+    "pages/pay-success/pay-success",
+    "pages/my-order/my-order",
+    "pages/about/about",
+    "pages/my-coupon/my-coupon",
+    "pages/iot-control/iot-control"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -52,6 +57,7 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",
     "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
     "l-counter": "miniprogram_npm/lin-ui/counter/index",
@@ -60,6 +66,7 @@
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "l-loading": "/miniprogram_npm/lin-ui/loading/index",
+    "l-list": "miniprogram_npm/lin-ui/list/index",
     "l-slide-view": "/miniprogram_npm/lin-ui/slide-view/index",
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
     "l-dialog": "/miniprogram_npm/lin-ui/dialog/index",

@@ -4,6 +4,8 @@
  * @date 2021/1/2 15:25
  */
 
+import {Http} from "../utils/http";
+
 class Payment{
     static async getPayParams(orderId){
         const serverParams=await Http.request({

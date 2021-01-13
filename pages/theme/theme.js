@@ -17,7 +17,7 @@ Page({
      */
     onLoad: async function (options) {
         const tname = options.tname
-        console.log(tname)
+        // console.log(tname)
         wx.lin.showLoading({
             color: '#157658',
             type: 'flash',

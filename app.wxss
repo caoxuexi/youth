@@ -5,12 +5,12 @@ page{
 
 @font-face {
     font-family: 'iconfont';  /* project id 1968616 */
-    src: url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.eot');
-    src: url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1968616_iztsjbw8h2j.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1968616_wc50grgdpz.eot');
+    src: url('//at.alicdn.com/t/font_1968616_wc50grgdpz.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1968616_wc50grgdpz.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1968616_wc50grgdpz.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1968616_wc50grgdpz.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1968616_wc50grgdpz.svg#iconfont') format('svg');
 }
 
 .sleeve{
@@ -38,4 +38,44 @@ content：为图标的编码去掉x和x前面的补个\再跟上后面的字母*
 
 .l-icon-address1:before{
     content:"\e614"
+}
+
+.l-icon-about:before{
+    content:"\e6a1"
+}
+
+.l-icon-unpaid:before{
+    content:"\e647"
+}
+
+.l-icon-paid:before{
+    content:"\e615"
+}
+
+.l-icon-delivered:before{
+    content:"\e637"
+}
+
+.l-icon-over:before{
+    content:"\e616"
+}
+
+.l-icon-order1:before{
+    content:"\e649"
+}
+
+.l-icon-coupon:before{
+    content:"\e60a"
+}
+
+.l-icon-address2:before{
+    content:"\e666"
+}
+
+.l-icon-sunny1:before{
+    content:"\e682"
+}
+
+.l-icon-flower:before{
+    content:"\e654"
 }

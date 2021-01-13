@@ -37,7 +37,7 @@
     "useApiHostProcess": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.12.0",
+  "libVersion": "2.14.3",
   "appid": "wx72074e95366c5e42",
   "projectname": "WindSleeve",
   "debugOptions": {
@@ -98,6 +98,17 @@
           "name": "pages/home/home",
           "pathName": "pages/home/home",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/pay-success/pay-success",
+          "pathName": "pages/pay-success/pay-success",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
           "scene": null
         }
       ]

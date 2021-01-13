@@ -1,0 +1,53 @@
+<view class="container">
+    <image class="top" src="/imgs/logo1.jpg"></image>
+    <view class="next2">
+        <view class="sub-container">
+            <view class="next-inner">
+                <text>作者</text>
+                <view class="block"></view>
+                <text>曹学习</text>
+            </view>
+            <view class="next-inner">
+                <text>设计</text>
+                <view class="block"></view>
+                <text style="color: #666666">瓜瓜</text>
+            </view>
+            <view class="next-inner">
+                <text>致谢</text>
+                <view class="block"></view>
+                <text style="color:#666666">Lin UI、Lin CMS开源项目组</text>
+            </view>
+        </view>
+    </view>
+    <view class="next3">
+        <view class="one-row">
+            <view class="left-side">
+                <text>自我介绍</text>
+                <text>https://www.caoxuexi.com</text>
+            </view>
+            <view class="right-side">
+                <view bind:tap="onCopyCourse" class="btn">
+                    <text>复</text><text>制</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="one-row">
+            <view class="left-side">
+                <text>git仓库</text>
+                <text>https://github.com/caoxuexi</text>
+            </view>
+            <view class="right-side">
+                <view bind:tap="onCopyGit" class="btn">
+                    <text>复</text><text>制</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="next4">
+        <image bind:tap="save" class="wx" src="/imgs/wx.jpg"></image>
+        <text>添加我的微信号</text>
+        <text>点击图片长按保存二维码识别</text>
+    </view>
+</view>

@@ -27,7 +27,13 @@ Page({
         this.setData({
             segHeight: h
         })
+        //进行服务端商品数据同步
         const cartData=await cart.getAllSkuFromServer()
+        if(cartData){
+            this.setData({
+                cartItems:cartData.items
+            })
+        }
         await this.recommendSpu()
     },
 

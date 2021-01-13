@@ -16,7 +16,6 @@
             <view class="discount-price">
                 <text class="minus-tag {{discountMoney==0?'':'discount-color'}}">-</text>
                 <l-price value="{{discountMoney}}" size="24" color="{{discountMoney==0?'#333':'#F55670'}}">
-
                 </l-price>
             </view>
         </view>
@@ -39,7 +38,7 @@
     </l-button>
 </view>
 
-<l-status-show show="{{!isOk}}" describe="订单中包含有售罄/下架/超出数量的商品" type="data"></l-status-show>
+<l-status-show show="{{!isOK}}" describe="订单中包含有售罄/下架/超出数量的商品" type="data"></l-status-show>
 
 <l-dialog content-color="#333333" type="alert" title="订单生成失败" l-confirm-class="dialog-confirm" show="{{orderFail}}" content="{{orderFailMsg}}">
 

@@ -9,6 +9,7 @@ import {accAdd} from "../utils/number";
 import {isTimeTemp} from "../miniprogram_npm/lin-ui/calendar/util";
 import {Http} from "../utils/http";
 import {OrderStatus} from "../core/enum"
+import {Paging} from "../utils/paging";
 
 class Order {
     orderItems
@@ -120,6 +121,26 @@ class Order {
             }
         })
         return orderPage.total
+    }
+
+    static async getDetail(oid) {
+        return Http.request({
+            url: `order/detail/${oid}`
+        })
+    }
+
+    static getPagingByStatus(status) {
+        return new Paging({
+            url:`order/by/status/${status}`
+        })
+        // return Http.request({
+        // })
+    }
+
+    static getPagingUnpaid() {
+        return new Paging({
+            url:`order/status/unpaid`
+        })
     }
 
     _orderIsOk() {

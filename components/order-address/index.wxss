@@ -70,13 +70,13 @@
 }
 .address-info{
     margin-top: 10rpx;
-    font-size:24rpx; 
+    font-size:24rpx;
     color: #999999;
     padding-left:60rpx;
 }
 
 .sleeve {
-    font-family: sleeve !important;
+    font-family: iconfont !important;
     font-size: 36rpx;
     font-style: normal;
     color: #333333;

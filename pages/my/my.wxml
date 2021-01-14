@@ -8,7 +8,7 @@
             <l-list bind:lintap="onGotoMyCoupon" icon="coupon" l-icon-class="sleeve-coupon" l-class-content="list-item" title="优惠券"></l-list>
             <l-list bind:lintap="onMgrAddress" icon="address2" l-icon-class="sleeve-address" l-class-content="list-item" title="收货地址"></l-list>
             <l-list bind:lintap="onGotoLinUI" icon="sunny1" l-icon-class="sleeve-sunny" l-right-class="right-desc" right-desc="Glorious Youth使用LinUI构建" l-class-content="list-item" title="感谢LinUI"></l-list>
-            <l-list bind:lintap="onGotoMyCourse" icon="flower" l-class="no-line" l-icon-class="sleeve-flower" l-right-class="right-desc" right-desc="stm32温湿度" l-class-content="list-item" title="开发板控制"></l-list>
+            <l-list bind:lintap="onGotoIot" icon="flower" l-class="no-line" l-icon-class="sleeve-flower" l-right-class="right-desc" right-desc="stm32温湿度" l-class-content="list-item" title="开发板控制"></l-list>
         </view>
 
     </view>
@@ -21,5 +21,4 @@
           show="{{showDialog}}"
           content="请先授权Glorious Youth获取您的收货地址"
           title="授权">
-
 </l-dialog>

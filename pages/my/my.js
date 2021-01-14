@@ -1,5 +1,6 @@
 import {Coupon} from "../../models/coupon";
-import {CouponStatus} from "../../core/enum";
+import {AuthAddress, CouponStatus} from "../../core/enum";
+import {promisic} from "../../miniprogram_npm/lin-ui/utils/util";
 
 Page({
     data: {},
@@ -23,9 +24,9 @@ Page({
         })
     },
 
-    onGotoMyCourse(event) {
+    onGotoIot(event) {
         wx.navigateTo({
-            url:"/pages/about-course/about-course"
+            url:"/pages/iot-control/iot-control"
         })
     },
 
@@ -34,4 +35,39 @@ Page({
             appId:'Lin-UI AppID'
         })
     },
+
+    async onMgrAddress(event) {
+        let authStatus = await this.hasAuthorizedAddress()
+        if (authStatus === AuthAddress.DENY) {
+            this.setData({
+                showDialog: true
+            })
+            return
+        }
+        await this.openAddress()
+    },
+
+    async hasAuthorizedAddress() {
+        const setting = await promisic(wx.getSetting)();
+        // console.log(setting)
+        const addressSetting = setting.authSetting['scope.address']
+        if (addressSetting === undefined) {
+            return AuthAddress.NOT_AUTH
+        }
+        if (addressSetting === false) {
+            return AuthAddress.DENY
+        }
+        if (addressSetting === true) {
+            return AuthAddress.AUTHORIZED
+        }
+    },
+
+    async openAddress() {
+        let res;
+        res = await promisic(wx.chooseAddress)();
+    },
+
+    onDialogConfirm(event){
+        wx.openSetting()
+    }
 });

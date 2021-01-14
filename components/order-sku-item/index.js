@@ -1,5 +1,5 @@
 // components/order-sku-panel/index.js
-import {parseSpecValue, parseSpecValueArray} from "../../utils/sku";
+import {parseSpecValue,parseSpecValueArray} from "../../utils/sku";
 
 Component({
   /**
@@ -19,8 +19,11 @@ Component({
 
   observers:{
     'orderItem':function (orderItem) {
-      // console.log(orderItem)
+      console.log(orderItem)
       const specValues = orderItem.spec_values
+      console.log(specValues)
+      const name=parseSpecValueArray(specValues)
+      console.log(name)
       this.setData({
         specValuesText:specValues?parseSpecValueArray(specValues):parseSpecValue(orderItem.specs)
       })

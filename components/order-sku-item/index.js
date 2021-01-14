@@ -1,4 +1,4 @@
-// components/order-sku-panel/index.js
+// components/order-sku-item/index.js
 import {parseSpecValue,parseSpecValueArray} from "../../utils/sku";
 
 Component({

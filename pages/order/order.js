@@ -16,6 +16,7 @@ Page({
         totalPrice: 0,
         discountMoney: 0,
         currentCouponId: null,
+        oid:"",
         order: null,
         orderFail: false,
         orderFailMsg: "",
@@ -25,6 +26,7 @@ Page({
         shoppingWay: ShoppingWay.BUY,
         submitBtnDisable: false,
         isOk: true,
+        payDialog: false,
     },
     onLoad: async function (options) {
         let isOK = true;
@@ -33,14 +35,14 @@ Page({
         let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
         let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
         //获取跳转方式，购物车还是立即购买
-        const shoppingWay=options.way
-        this.data.shoppingWay=shoppingWay
-        if (shoppingWay===ShoppingWay.BUY){
-            const skuId=options.sku_id
-            const count=options.count
-            orderItems=await this.getSingleOrderItems(skuId, count)
-            localItemCount=1
-        }else{
+        const shoppingWay = options.way
+        this.data.shoppingWay = shoppingWay
+        if (shoppingWay === ShoppingWay.BUY) {
+            const skuId = options.sku_id
+            const count = options.count
+            orderItems = await this.getSingleOrderItems(skuId, count)
+            localItemCount = 1
+        } else {
             const skuIds = cart.getCheckedSkuIds()
             orderItems = await this.getCartOrderItems(skuIds)
             localItemCount = skuIds.length
@@ -69,10 +71,10 @@ Page({
         })
     },
 
-    async getSingleOrderItems(skuId,count){
+    async getSingleOrderItems(skuId, count) {
         //服务器只提供了了获取数组的方法，所以我们这里返回数组一样可以用
         const skus = await Sku.getSkusByIds(skuId)
-        return [new OrderItem(skus[0],count)]
+        return [new OrderItem(skus[0], count)]
     },
 
     async getCartOrderItems(skuIds) {
@@ -111,23 +113,24 @@ Page({
             cart.removeCheckedItems()
         }
 
-        wx.lin.showLoading({
-            type: "flash",
-            fullScreen: true,
-            color: "#157658"
+        this.setData({
+            payDialog: true
         })
 
-        //向后端请求支付参数   wx.requestPayment调用就可以拉起微信支付
-        const payParams = await Payment.getPayParams(oid)
-        if (!payParams) {
-            return
-        }
+        this.data.oid=oid;
 
-        wx.redirectTo({
-            url:`/pages/pay-success/paysuccess?oid=${oid}`
-        })
 
         // 如果有微信支付的话才使用，wx.requestPayment传入服务端拼接参数,会自动拉起微信支付
+        //向后端请求支付参数   wx.requestPayment调用就可以拉起微信支付
+        // wx.lin.showLoading({
+        //     type: "flash",
+        //     fullScreen: true,
+        //     color: "#157658"
+        // })
+        // const payParams = await Payment.getPayParams(oid)
+        // if (!payParams) {
+        //     return
+        // }
         // try {
         //     const res = await wx.requestPayment(payParams)
         //     //支付成功  -redirectTo防止用户返回
@@ -216,5 +219,26 @@ Page({
             return couponBO
         })
     },
+
+    //无微信支付时使用的对话框确认支付
+    async onPayConfirm(event) {
+        const oid=this.data.oid
+        const payParams = await Payment.getPayParams(oid)
+        if (!payParams) {
+            return
+        }
+        wx.redirectTo({
+            url: `/pages/pay-success/pay-success?oid=${oid}`
+        })
+    },
+
+    //无微信支付时使用的对话框取消支付
+    onPayCancel(event) {
+        //支付失败--引导用户再次支付(我的订单)
+        wx.redirectTo({
+            //我的订单里面有对订单状态进行分类-这里转到未支付的地方
+            url: `/pages/my-order/my-order?key=1`
+        })
+    }
 
 });

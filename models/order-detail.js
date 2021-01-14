@@ -8,10 +8,11 @@ class OrderDetail {
     discountPrice = 0
     createTime = null
     constructor(orderDetail) {
+        //把传入参数里的属性值赋值给this对应的属性值
         Object.assign(this, orderDetail)
         this.correctOrderStatus()
         this.calDiscountPrice()
-        this.createTime = getSlashYMDHMS(orderDetail.create_time)
+        this.createTime = getSlashYMDHMS(orderDetail.placed_time)
     }
 
     orderStatusText(status) {
@@ -36,7 +37,7 @@ class OrderDetail {
     correctOrderStatus() {
         if (this.status == OrderStatus.UNPAID) {
             const currentTimestamp = new Date().getTime();
-            const createTimestamp = this.create_time;
+            const createTimestamp = this.placed_time;
             const periodMill = this.period * 1000;
             if ((createTimestamp + periodMill) > currentTimestamp) {
                 const mill = (createTimestamp + periodMill) - currentTimestamp
@@ -47,7 +48,6 @@ class OrderDetail {
         }
         this.statusText = this.orderStatusText(this.status)
     }
-
 }
 
 export {

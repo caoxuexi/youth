@@ -109,6 +109,13 @@
         {
           "name": "pages/my/my",
           "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/pay-success/pay-success",
+          "pathName": "pages/pay-success/pay-success",
+          "query": "oid=292",
           "scene": null
         }
       ]

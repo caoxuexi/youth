@@ -7,7 +7,7 @@
     <l-segment-item tab="已完成" key="4"></l-segment-item>
 </l-segment>
 <view class="container" wx:if="{{!empty}}">
-    <l-loadmore show="{{bottomLoading}}" type="{{loadingType}}" loading-text="努力加载中..." end-text="<-- 曹学习作品 -->">
+    <l-loadmore show="{{bottomLoading}}" type="{{loadingType}}" loading-text="努力加载中..." end-text="<-- CaoStudy作品 -->">
         <view slot="content" class="container">
             <block wx:for="{{items}}" wx:key="index">
                 <s-my-order-item bind:paysuccess="onPaySuccess" class="item" item="{{item}}"></s-my-order-item>

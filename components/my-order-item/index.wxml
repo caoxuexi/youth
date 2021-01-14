@@ -44,3 +44,12 @@
 </view>
 
 <l-loading></l-loading>
+<l-dialog content-color="#333333"
+          confirm-color="#157658"
+          title-color="#157658"
+          type="confirm"
+          bind:linconfirm="onPayConfirm"
+          show="{{payDialog}}"
+          content="是否确认支付"
+          title="支付">
+</l-dialog>

@@ -37,7 +37,7 @@
     "useApiHostProcess": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.3",
+  "libVersion": "2.14.4",
   "appid": "wx72074e95366c5e42",
   "projectname": "WindSleeve",
   "debugOptions": {
@@ -116,6 +116,11 @@
           "name": "pages/pay-success/pay-success",
           "pathName": "pages/pay-success/pay-success",
           "query": "oid=292",
+          "scene": null
+        },
+        {
+          "name": "pages/iot-control/iot-control",
+          "pathName": "pages/iot-control/iot-control",
           "scene": null
         }
       ]

@@ -1,1 +1,25 @@
-<view>iot-control</view>
+<view class="container">
+    <image class="top" src="/imgs/logo1.jpg"></image>
+    <view class="next2">
+        <view class="sub-container">
+            <view class="next-inner">
+                <text>温度</text>
+                <view class="block"></view>
+                <text>{{temperature}}</text>
+            </view>
+            <view class="next-inner">
+                <text>湿度</text>
+                <view class="block"></view>
+                <text style="color: #666666">{{humidity}}</text>
+            </view>
+            <view class="next-inner">
+                <text>开发板</text>
+                <view class="block"></view>
+                <text style="color:#666666">正点原子stm32潘多拉</text>
+            </view>
+        </view>
+        <view class="divide-line"></view>
+        <l-button bind:longtap="onMonitor" class="monitor-button" size="medium">{{status}}</l-button>
+    </view>
+
+</view>

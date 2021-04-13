@@ -48,9 +48,11 @@ Page({
     },
 
     async hasAuthorizedAddress() {
+        //现在address不需要授权了，但是代码还是如下保留着(可以删)
         const setting = await promisic(wx.getSetting)();
-        // console.log(setting)
-        const addressSetting = setting.authSetting['scope.address']
+        console.log(setting)
+        const addressSetting = setting.authSetting['scope.address'] //返回一直是true
+        console.log(addressSetting)
         if (addressSetting === undefined) {
             return AuthAddress.NOT_AUTH
         }

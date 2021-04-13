@@ -1,4 +1,4 @@
-<wxs module="s" src="../../wxs/status.wxs" xmlns:wx=""></wxs>
+<wxs module="s" src="../../wxs/status.wxs"></wxs>
 <view catch:tap="onGotoDetail"  class="container">
     <view class="header">
         <text>订单编号: {{_item.order_no}}</text>

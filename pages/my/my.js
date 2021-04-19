@@ -31,9 +31,9 @@ Page({
     },
 
     onGotoLinUI() {
-        wx.navigateToMiniProgram({
-            appId:'Lin-UI AppID'
-        })
+        // wx.navigateToMiniProgram({
+        //     appId:'Lin-UI AppID'
+        // })
     },
 
     async onMgrAddress(event) {

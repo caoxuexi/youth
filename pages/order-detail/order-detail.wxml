@@ -53,5 +53,14 @@
             支 付
         </l-button>
     </view>
+    <view wx:if="{{order.status===3}}" class="pay-container">
+        <l-button  bg-color="#9E2731"
+                   bind:lintap="onCertain"
+                   l-class="pay-btn"
+                   width="100"
+                   height="48">
+            确认收货
+        </l-button>
+    </view>
 </view>
 <l-loading></l-loading>

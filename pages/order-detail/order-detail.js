@@ -44,6 +44,20 @@ Page({
         }
     },
 
+    async onCertain(event){
+        const oid = this.data.oid
+        if (!oid) {
+            return
+        }
+        wx.lin.showLoading({
+            type: "flash",
+            fullScreen: true,
+            color: "#157658"
+        })
+        let res
+
+    },
+
     onPaySuccess(event) {
     }
 

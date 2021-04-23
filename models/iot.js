@@ -6,7 +6,7 @@
 
 import {Http} from "../utils/http";
 
-class IOT{
+class Iot{
     temperature
     humidity
 
@@ -15,4 +15,8 @@ class IOT{
             url: `iot/getTemAndHum`,
         });
     }
+}
+
+export{
+    Iot
 }

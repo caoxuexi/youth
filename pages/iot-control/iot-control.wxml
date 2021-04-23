@@ -19,7 +19,7 @@
             </view>
         </view>
         <view class="divide-line"></view>
-        <l-button bind:longtap="onMonitor" class="monitor-button" size="medium">{{status}}</l-button>
+        <l-button bind:tap="onMonitor" class="monitor-button" size="medium">{{status}}</l-button>
     </view>
 
 </view>
